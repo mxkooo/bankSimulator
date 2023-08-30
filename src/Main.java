@@ -84,6 +84,9 @@ public class Main {
                     break;
                 case 4:
                     takeCredit();
+                    break;
+                default:
+                    System.out.println("Złe dane");
             }
         } else {
             System.out.println("Błędny numer pin");
