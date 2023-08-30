@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main {
     public static void main(String[] args) {
-//        setSaldo(120);
+        setSaldo(120);
         hello();
     }
 
@@ -34,6 +34,20 @@ public class Main {
         Random random = new Random();
         int randomNumber = random.nextInt(900000)  + 100000;
         System.out.println("Twój numer BLIK to: " + randomNumber);
+    }
+    public static void takeCredit() {
+        System.out.println("Wpisz kwotę kredytu jaką chcesz zaciągnąć (maks. " + 5 * saldo + ").");
+        double creditAmount = scanner.nextDouble();
+        if (creditAmount <= (5 * saldo)) {
+            saldo += creditAmount;
+            System.out.println("Pomyślnie zaciągnięto kredyt. Twój stan konta to teraz: " + saldo);
+        }
+//        else if (saldo == 0){
+//            System.out.println("Masz zbyt małą zdolność kredytową");
+//        }
+        else {
+            System.out.println("Masz zbyt małą zdolność kredytową");
+        }
     }
     public static void hello() {
         System.out.println("Podaj swoję imię: ");
@@ -75,20 +89,7 @@ public class Main {
             System.out.println("Błędny numer pin");
         }
     }
-    public static void takeCredit() {
-        System.out.println("Wpisz kwotę kredytu jaką chcesz zaciągnąć");
-        double creditAmount = scanner.nextDouble();
-        if (creditAmount <= (5 * saldo)) {
-            saldo += creditAmount;
-            System.out.println("Pomyślnie zaciągnięto kredyt. Twój stan konta to teraz: " + saldo);
-        }
-//        else if (saldo == 0){
-//            System.out.println("Masz zbyt małą zdolność kredytową");
-//        }
-        else {
-            System.out.println("Masz zbyt małą zdolność kredytową");
-        }
-    }
+
     public static double getSaldo() {
         return saldo;
     }
