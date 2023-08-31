@@ -4,12 +4,14 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main {
     public static void main(String[] args) {
+        setSavings(100);
         setSaldo(120);
         hello();
     }
 
 
     static double saldo = 0;
+    static double savings = 0;
     static Scanner scanner = new Scanner(System.in);
     static List<Integer> realPin = new ArrayList<>();
     public static void addBalance() {
@@ -49,6 +51,34 @@ public class Main {
             System.out.println("Masz zbyt małą zdolność kredytową");
         }
     }
+    public static void addSavings() {
+        System.out.println("Wpisz kwotę, jaką chcesz przelać na konto oszczędnościowe");
+        double savingsAmount = scanner.nextDouble();
+        if (saldo >= savingsAmount){
+            saldo -= savingsAmount;
+            savings += savingsAmount;
+            System.out.println("Pomyślnie przelano " + savingsAmount + "zł. Masz teraz " + savings + "zł na koncie oszczędnośćiowym");
+            System.out.println("Stan konta wynosi teraz: " + saldo + "zł");
+        }else {
+            System.out.println("Masz za mało środków na koncie");
+            double missing = savingsAmount - saldo;
+            System.out.println("Brakuje ci: " + missing);
+        }
+    }
+    public static void savingsToMain() {
+        System.out.println("Wpisz kwotę, jaką chcesz przelać na główne konto");
+        double toMainAmonut = scanner.nextDouble();
+        if ( 0 < toMainAmonut){
+            savings -= toMainAmonut;
+            saldo += toMainAmonut;
+            System.out.println("Pomyślnie przelano " + toMainAmonut + "zł. Masz teraz " + savings + "zł na koncie oszczędnośćiowym");
+            System.out.println("Stan konta wynosi teraz: " + saldo + "zł");
+        }else {
+            System.out.println("Masz za mało środków na koncie");
+            double missing = toMainAmonut - saldo;
+            System.out.println("Brakuje ci: " + missing);
+        }
+    }
     public static void hello() {
         System.out.println("Podaj swoję imię: ");
         String userName = scanner.nextLine();
@@ -66,11 +96,17 @@ public class Main {
                 System.out.println("Twoje saldo wynosi: " + saldo);
                 System.out.println("---------------");
             }
+            if (savings > 0 ){
+                System.out.println("Twoje oszczędności to: " + savings);
+                System.out.println("---------------");
+            }
             System.out.println("Wybierz operację jaką chcesz wykonać: ");
             System.out.println("1, aby doładować konto,");
             System.out.println("2, aby obciążyć konto,");
             System.out.println("3, aby wygenerować numer BLIK.");
             System.out.println("4, aby zaciągnać kredyt.");
+            System.out.println("5, aby dodać oszczędności.");
+            System.out.println("6, aby przelać z oszczędności na konto .");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -85,6 +121,12 @@ public class Main {
                 case 4:
                     takeCredit();
                     break;
+                case 5:
+                    addSavings();
+                    break;
+                case 6:
+                    savingsToMain();
+                    break;
                 default:
                     System.out.println("Złe dane");
             }
@@ -95,6 +137,10 @@ public class Main {
 
     public static double getSaldo() {
         return saldo;
+    }
+
+    public static void setSavings(double savings) {
+        Main.savings = savings;
     }
 
     public static void setSaldo(double saldo) {
