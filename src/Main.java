@@ -8,12 +8,12 @@ public class Main {
         setSaldo(120);
         hello();
     }
-
-
+    // zmienne
     static double saldo = 0;
     static double savings = 0;
     static Scanner scanner = new Scanner(System.in);
     static List<Integer> realPin = new ArrayList<>();
+    // funkcje
     public static void addBalance() {
         System.out.println("Wpisz kwotę, jaką chcesz doładować konto");
         double incomeAmount = scanner.nextDouble();
@@ -21,11 +21,20 @@ public class Main {
         System.out.println("Twoje saldo wynosi teraz: " + saldo);
     }
     public static void transferBalance() {
+        System.out.println("Wpisz 1, aby przelać z konta głównego lub 2 z oszczędnościowego");
+        int option = scanner.nextInt();
         System.out.println("Wpisz kwotę, jaką chcesz przelać");
         double transferAmount = scanner.nextDouble();
-        if (saldo >= transferAmount){
-            saldo -= transferAmount;
-            System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + saldo + "zł na koncie");
+        if (option == 1){
+            if (saldo >= transferAmount){
+                saldo -= transferAmount;
+                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + saldo + "zł na koncie");
+            }
+        }else if (option == 2) {
+            if (savings >= transferAmount){
+                savings -= transferAmount;
+                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + savings + "zł na koncie oszczędnościowym");
+            }
         }else {
             System.out.println("Masz za mało środków na koncie");
             double missing = transferAmount - saldo;
@@ -38,9 +47,9 @@ public class Main {
         System.out.println("Twój numer BLIK to: " + randomNumber);
     }
     public static void takeCredit() {
-        System.out.println("Wpisz kwotę kredytu jaką chcesz zaciągnąć (maks. " + 5 * saldo + ").");
+        System.out.println("Wpisz kwotę kredytu jaką chcesz zaciągnąć (maks. " + (5 * saldo) + ").");
         double creditAmount = scanner.nextDouble();
-        if (creditAmount <= (5 * saldo)) {
+        if (creditAmount < (5 * saldo)) {
             saldo += creditAmount;
             System.out.println("Pomyślnie zaciągnięto kredyt. Twój stan konta to teraz: " + saldo);
         }
