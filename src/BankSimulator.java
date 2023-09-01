@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class bankSimulator {
-    public bankSimulator(){
+public class BankSimulator {
+    public BankSimulator(){
         setSaldo(100);
         setSavings(100);
         hello();
