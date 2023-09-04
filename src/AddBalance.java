@@ -5,7 +5,7 @@ public class AddBalance {
     public static void addBalance() {
         System.out.println("Wpisz kwotę, jaką chcesz doładować konto");
         double incomeAmount = scanner.nextDouble();
-        saldo += incomeAmount;
-        System.out.println("Twoje saldo wynosi teraz: " + saldo);
+        BankSimulator.saldo += incomeAmount;
+        System.out.println("Twoje saldo wynosi teraz: " + BankSimulator.saldo);
     }
 }

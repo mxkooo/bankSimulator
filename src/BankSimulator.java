@@ -9,9 +9,9 @@ public class BankSimulator {
         setSavings(100);
         hello();
     }
-    static double saldo = 0;
+    public static double saldo = 0;
     static double savings = 0;
-
+    static Scanner scanner = new Scanner(System.in);
     public static void hello() {
         System.out.println("Podaj swoję imię: ");
         String userName = scanner.nextLine();
@@ -42,22 +42,22 @@ public class BankSimulator {
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
-                    addBalance();
+                    AddBalance.addBalance();
                     break;
                 case 2:
-                    transferBalance();
+                    TransferBalance.transferBalance();
                     break;
                 case 3:
-                    generateBlik();
+                    GenerateBlik.generateBlik();
                     break;
                 case 4:
-                    takeCredit();
+                    TakeCredit.takeCredit();
                     break;
                 case 5:
-                    addSavings();
+                    AddSavings.addSavings();
                     break;
                 case 6:
-                    savingsToMain();
+                    TransferBalance.savingsToMain();
                     break;
                 default:
                     System.out.println("Złe dane");
@@ -65,6 +65,14 @@ public class BankSimulator {
         } else {
             System.out.println("Błędny numer pin");
         }
+    }
+
+    public static double getSaldo() {
+        return saldo;
+    }
+
+    public static double getSavings() {
+        return savings;
     }
 
     public void setSavings(double savings) {
