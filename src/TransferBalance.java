@@ -11,12 +11,12 @@ public class TransferBalance {
         if (option == 1){
             if (BankSimulator.saldo >= transferAmount){
                 BankSimulator.saldo -= transferAmount;
-                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + saldo + "zł na koncie");
+                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + BankSimulator.saldo + "zł na koncie");
             }
         }else if (option == 2) {
             if (BankSimulator.savings >= transferAmount){
                 BankSimulator.savings -= transferAmount;
-                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + savings + "zł na koncie oszczędnościowym");
+                System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + BankSimulator.savings + "zł na koncie oszczędnościowym");
             }
         }else {
             System.out.println("Masz za mało środków na koncie");
