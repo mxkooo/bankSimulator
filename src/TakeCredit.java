@@ -6,7 +6,7 @@ public class TakeCredit {
     System.out.println("Wpisz kwotę kredytu jaką chcesz zaciągnąć (maks. " + (5 * BankSimulator.saldo) + ").");
     double creditAmount = scanner.nextDouble();
     if (creditAmount < (5 * BankSimulator.saldo)) {
-        BankSimulator.saldo += creditAmount;
+        BankSimulator.setSaldo(BankSimulator.getSaldo() + creditAmount);
         System.out.println("Pomyślnie zaciągnięto kredyt. Twój stan konta to teraz: " + BankSimulator.saldo);
     }
 //        else if (saldo == 0){

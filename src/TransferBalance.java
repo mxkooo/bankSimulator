@@ -9,13 +9,13 @@ public class TransferBalance {
         System.out.println("Wpisz kwotę, jaką chcesz przelać");
         double transferAmount = scanner.nextDouble();
         if (option == 1){
-            if (BankSimulator.saldo >= transferAmount){
-                BankSimulator.saldo -= transferAmount;
+            if (BankSimulator.getSaldo() >= transferAmount){
+                BankSimulator.setSaldo(BankSimulator.getSaldo() - transferAmount);
                 System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + BankSimulator.saldo + "zł na koncie");
             }
         }else if (option == 2) {
-            if (BankSimulator.savings >= transferAmount){
-                BankSimulator.savings -= transferAmount;
+            if (BankSimulator.getSavings() >= transferAmount){
+                BankSimulator.setSavings(BankSimulator.getSavings() - transferAmount);
                 System.out.println("Pomyślnie przelano " + transferAmount + "zł. Masz teraz " + BankSimulator.savings + "zł na koncie oszczędnościowym");
             }
         }else {
@@ -30,8 +30,8 @@ public class TransferBalance {
         System.out.println("Wpisz kwotę, jaką chcesz przelać na główne konto");
         double toMainAmonut = scanner.nextDouble();
         if ( 0 < toMainAmonut){
-            BankSimulator.savings -= toMainAmonut;
-            BankSimulator.saldo += toMainAmonut;
+            BankSimulator.setSavings(BankSimulator.getSavings() - toMainAmonut);
+            BankSimulator.setSaldo(BankSimulator.getSaldo() + toMainAmonut);
             System.out.println("Pomyślnie przelano " + toMainAmonut + "zł. Masz teraz " + BankSimulator.savings + "zł na koncie oszczędnośćiowym");
             System.out.println("Stan konta wynosi teraz: " + BankSimulator.saldo + "zł");
         }else {

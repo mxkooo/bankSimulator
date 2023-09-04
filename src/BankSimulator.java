@@ -75,11 +75,11 @@ public class BankSimulator {
         return savings;
     }
 
-    public void setSavings(double savings) {
-        this.savings = savings;
+    public static void setSavings(double savings) {
+        BankSimulator.savings = savings;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public static void setSaldo(double saldo) {
+        BankSimulator.saldo = saldo;
     }
 }
