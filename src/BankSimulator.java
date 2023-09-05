@@ -1,15 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class BankSimulator {
+    public BankSimulator(){};
 
-    private final AddSavings addSavings;
-    private final AddBalance addBalance;
-    private final GenerateBlik generateBlik;
-    private final TakeCredit takeCredit;
-    private final TransferBalance transferBalance;
+    private static AddSavings addSavings;
+    private static AddBalance addBalance;
+    private static GenerateBlik generateBlik;
+    private static TakeCredit takeCredit;
+    private static TransferBalance transferBalance;
     public BankSimulator(
             AddSavings addSavings,
             AddBalance addBalance,
