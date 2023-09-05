@@ -4,11 +4,30 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BankSimulator {
-    public BankSimulator(){
-        setSaldo(100);
-        setSavings(100);
-        hello();
+
+    private final AddSavings addSavings;
+    private final AddBalance addBalance;
+    private final GenerateBlik generateBlik;
+    private final TakeCredit takeCredit;
+    private final TransferBalance transferBalance;
+    public BankSimulator(
+            AddSavings addSavings,
+            AddBalance addBalance,
+            GenerateBlik generateBlik,
+            TakeCredit takeCredit,
+            TransferBalance transferBalance) {
+        this.addSavings = addSavings;
+        this.addBalance = addBalance;
+        this.generateBlik = generateBlik;
+        this.takeCredit = takeCredit;
+        this.transferBalance = transferBalance;
     }
+
+//    public BankSimulator(){
+//        setSaldo(100);
+//        setSavings(100);
+//        hello();
+//    }
     public static double saldo = 0;
     static double savings = 0;
     static Scanner scanner = new Scanner(System.in);
