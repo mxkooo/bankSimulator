@@ -1,35 +1,16 @@
 import java.util.Scanner;
 
 public class BankSimulator {
-    public BankSimulator(){};
 
-    private static AddSavings addSavings;
-    private static AddBalance addBalance;
-    private static GenerateBlik generateBlik;
-    private static TakeCredit takeCredit;
-    private static TransferBalance transferBalance;
-    public BankSimulator(
-            AddSavings addSavings,
-            AddBalance addBalance,
-            GenerateBlik generateBlik,
-            TakeCredit takeCredit,
-            TransferBalance transferBalance) {
-        this.addSavings = addSavings;
-        this.addBalance = addBalance;
-        this.generateBlik = generateBlik;
-        this.takeCredit = takeCredit;
-        this.transferBalance = transferBalance;
+    public BankSimulator(){
+        BankSimulator.setSaldo(100);
+        BankSimulator.setSavings(100);
+        loggingIn();
     }
-
-//    public BankSimulator(){
-//        setSaldo(100);
-//        setSavings(100);
-//        hello();
-//    }
     public static double saldo = 0;
     static double savings = 0;
     static Scanner scanner = new Scanner(System.in);
-    public static void hello() {
+    public static void loggingIn() {
         System.out.println("Podaj swoję imię: ");
         String userName = scanner.nextLine();
         System.out.println("Witaj " + userName + ". Ustal swój numer PIN");
@@ -37,48 +18,7 @@ public class BankSimulator {
         System.out.println("Podaj numer pin do sprawdzenia: ");
         int pinToCheck = scanner.nextInt();
         if (PIN  == pinToCheck) {
-            System.out.println("Zostałeś prawidłowo zalogowany");
-            System.out.println("---------------");
-            System.out.println("Twój numer PIN to: " + PIN);
-            System.out.println("---------------");
-            if (saldo > 0 ){
-                System.out.println("Twoje saldo wynosi: " + saldo);
-                System.out.println("---------------");
-            }
-            if (savings > 0 ){
-                System.out.println("Twoje oszczędności to: " + savings);
-                System.out.println("---------------");
-            }
-            System.out.println("Wybierz operację jaką chcesz wykonać: ");
-            System.out.println("1, aby doładować konto,");
-            System.out.println("2, aby obciążyć konto,");
-            System.out.println("3, aby wygenerować numer BLIK.");
-            System.out.println("4, aby zaciągnać kredyt.");
-            System.out.println("5, aby dodać oszczędności.");
-            System.out.println("6, aby przelać z oszczędności na konto .");
-            int option = scanner.nextInt();
-            switch (option) {
-                case 1:
-                    AddBalance.addBalance();
-                    break;
-                case 2:
-                    TransferBalance.transferBalance();
-                    break;
-                case 3:
-                    GenerateBlik.generateBlik();
-                    break;
-                case 4:
-                    TakeCredit.takeCredit();
-                    break;
-                case 5:
-                    AddSavings.addSavings();
-                    break;
-                case 6:
-                    TransferBalance.savingsToMain();
-                    break;
-                default:
-                    System.out.println("Złe dane");
-            }
+            PrintMessage.printMessage();
         } else {
             System.out.println("Błędny numer pin");
         }
